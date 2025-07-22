@@ -12,5 +12,21 @@ int main() {
         chances = selection();
     } while (chances == 0);
     initiate(chances, guessNum);
+    while (chances == INT_MAX) {
+        char c;
+        cout << "Would you like to play another round? (y/n) ";
+        cin >> c;
+        if (c == 'y') {
+            guessNum = random_generator();
+            initiate(chances,guessNum);
+        }
+        else if(c == 'n') {
+            break;
+        }
+        else {
+            cerr << "You must input either \'y\' or \'n\'.\n";
+        }
+    }
+    cout << "Exiting game..." << endl;
     return 0;
 }

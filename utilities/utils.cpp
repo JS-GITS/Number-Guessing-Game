@@ -2,6 +2,7 @@
 #include <string>
 #include <random>
 #include <chrono>
+#include <fstream>
 #include "utils.h"
 
 using namespace std;
@@ -20,7 +21,8 @@ void print_message() {
     cout << "1. Easy (10 chances)\n";
     cout << "2. Medium (5 chances)\n";
     cout << "3. Hard (3 chances)\n";
-    cout << "4. Practice (Unlimited chances)\n" << endl;
+    cout << "4. Practice (Unlimited chances)\n";
+    cout << "5. Check your highscores\n" << endl;
 }
 
 int selection() {
@@ -54,10 +56,74 @@ int selection() {
         cout << "Let's practice shall we!\n" << endl; 
         chances = INT_MAX;
     }
+    else if (guessNum == 5) {
+        vector<int> highscores = check_highscore();
+        vector<string> difficulties = {"Easy: ", "Medium: ", "Hard: "};
+        cout << "\n";
+        for (int i = 0; i < highscores.size(); i++) {
+            if (highscores[i] != 0) {
+                cout << difficulties[i] << highscores[i] << " attempts\n";
+            }
+            else {
+                cout << difficulties[i] << "No highscore yet\n";
+            }
+        }
+        cout << "\n";
+    }
     else {
-        cerr << "\nYou must input the difficulties from 1 to 3.\n\n";
+        cerr << "\nYou must input the difficulties from 1 to 4.\n\n";
     }
     return chances;
+}
+
+vector<int> check_highscore() {
+    ifstream readFile("./data/highscore.json");
+    vector<int> scores = {0, 0, 0};
+    vector<string> difficulties = {"\"Easy\": ", "\"Medium\": ", "\"Hard\": "};
+    if (!readFile) {
+        return scores;
+    }
+    string line;
+    int counter = 0;
+    while (getline(readFile, line)) {
+        for (string i:difficulties) {
+            size_t position = line.find(i);
+            if (position != string::npos) {
+                string num = line.substr(position + i.size());
+                scores[counter] = stoi(num);
+                counter++;
+            }
+        }
+    }
+    readFile.close();
+    return scores;
+}
+
+void write_highscore(int score, int chances) {
+        vector<int> highscore = check_highscore();
+        ofstream writeFile("./data/highscore.json");
+        int pos;
+        if (chances == 10) {
+            pos = 0;
+        }
+        else if (chances == 5) {
+            pos = 1;
+        }
+        else if (chances == 3) {
+            pos = 2;
+        }
+        else {
+            return;
+        }
+        if (score < highscore[pos] || highscore[pos] == 0) {
+            highscore[pos] = score;
+        }
+        writeFile << "{\n";
+        writeFile << "  \"Easy\": " << highscore[0] << ",\n";
+        writeFile << "  \"Medium\": " << highscore[1] << ",\n";
+        writeFile << "  \"Hard\": " << highscore[2] << "\n";
+        writeFile << "}\n";
+        writeFile.close();
 }
 
 void initiate(int chances, int guessNum) {
@@ -81,6 +147,7 @@ void initiate(int chances, int guessNum) {
             auto durationMilli = chrono::duration_cast<chrono::milliseconds>(secondPoint - firstPoint);    
             int milliseconds = durationMilli.count() - (durationSec.count() * 1000);
             cout << "You completed the game in " << durationSec.count() << " seconds and " << milliseconds << " milliseconds.\n" << endl;
+            write_highscore(counter, chances);
             return;
         }
         else if (user_input > 100 || user_input < 1) {
