@@ -6,6 +6,17 @@
 #include "utils.h"
 
 using namespace std;
+/**
+ * @brief Generates a randomly generated number from lowerNum to upperNum
+ * 
+ * This function takes in two arguments, that being the lowerNum and upperNum. It uses the random library
+ * to generate a random number from lowerNum to upperNum by using uniform distribution.
+ * 
+ * @param lowest range for a randomly generated number
+ * @param highest range for a randomly generated number
+ * 
+ * @return a randomly generated number between lowerNum and upperNum
+ */
 int random_generator(int lowerNum, int upperNum) {
     random_device seed;
     mt19937 generate(seed());
@@ -13,10 +24,18 @@ int random_generator(int lowerNum, int upperNum) {
     return distr(generate);
 }
 
+/**
+ * @brief Prints a welcoming message when the you run the program
+ * 
+ * Function will display a message welcoming the user, telling the user
+ * to guess a number between 1 and 100. It will then list out the difficulties: 
+ * Easy, Medium, Hard, and Practice, and the option to check your highscore.
+ * 
+ */
 void print_message() {
     cout << "Welcome to Number Guessing Game!\n";
     cout << "I'm thinking of a number between 1 and 100.\n";
-    cout << "You have 5 chances to guess the correct number.\n";
+    cout << "You have a fixed number of chances to guess the correct number.\n";
     cout << "Please select the difficulty level:\n";
     cout << "1. Easy (10 chances)\n";
     cout << "2. Medium (5 chances)\n";
@@ -25,6 +44,16 @@ void print_message() {
     cout << "5. Check your highscores\n" << endl;
 }
 
+/**
+ * @brief Gives the user a selection to choose a difficulty or check the highscore
+ * 
+ * This function gives the user a promp in the CLI(Command Line Interface) to choose 
+ * a difficulty between 1 and 4, or check the highscore with 5. After picking one of
+ * the difficulties, the function returns an integer indicating the number of chances
+ * the user have to guess the randomized number.
+ * 
+ * @return the number of chances the user have depending on the difficulty chosen
+ */
 int selection() {
     string difficulty;
     int guessNum;
@@ -76,6 +105,15 @@ int selection() {
     return chances;
 }
 
+/**
+ * @brief Checks the highscore for each difficulty from the JSON file
+ * 
+ * This function reads the JSON file, "./data/highscore.json", and creates a vector
+ * with the highscores of each difficulty level. If there are no highscore yet, it
+ * will be 0, otherwise, it will be non-zero.
+ * 
+ * @return a vector of highscores of type integer with each difficulty scores
+ */
 vector<int> check_highscore() {
     ifstream readFile("./data/highscore.json");
     vector<int> scores = {0, 0, 0};
@@ -99,6 +137,17 @@ vector<int> check_highscore() {
     return scores;
 }
 
+/**
+ * @brief Writes the new highscore to the JSON file
+ * 
+ * This function will read the JSON file, "./data/highscore.JSON", and compare
+ * the current score with the highscore of that difficulty. If the current score is
+ * higher(lower no of attempts), it will replace the highscore and write that score
+ * to the JSON file. 
+ * 
+ * @param the number of attempts needed to guess the correct number
+ * @param number of chances given to guess the correct number
+ */
 void write_highscore(int score, int chances) {
         vector<int> highscore = check_highscore();
         ofstream writeFile("./data/highscore.json");
@@ -126,6 +175,17 @@ void write_highscore(int score, int chances) {
         writeFile.close();
 }
 
+/**
+ * @brief Generates a number that deviates from guessNum by a range of 1 to 15 
+ * 
+ * Takes in guessNum and generate a random number from 1 to 15, and it either
+ * add to subtract it from guessNum. It will then assign it to hintNum, and
+ * returns hintNum.
+ * 
+ * @param the randomly generated number the user is intended to guess
+ * 
+ * @return a number that is deviated from guessNum by 1 to 15
+ */
 int hint_system(int guessNum) {
     int rangeNum = random_generator(1,15);
     int sign = random_generator(0,1);
@@ -134,6 +194,19 @@ int hint_system(int guessNum) {
     return hintNum;
 }
 
+/**
+ * @brief Starts the whole game with the selected difficulty
+ * 
+ * This function takes in the number of chances and the randomly generated
+ * number, and requests user input for a number guess. A time point is recorded as
+ * soon as the game starts, and calculates the duration at the end of the game.
+ * Hints are given if they make a certain amount of attempts; if the user ran
+ * out of chances, there will be a message shown that the game has ended.
+ * 
+ * @param number of chances given to guess the correct number
+ * @param the randomly generated number the user is intended to guess
+ * 
+ */
 void initiate(int chances, int guessNum) {
     int user_input;
     int counter = 0;
