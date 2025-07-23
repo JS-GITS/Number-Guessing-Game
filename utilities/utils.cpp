@@ -6,10 +6,10 @@
 #include "utils.h"
 
 using namespace std;
-int random_generator() {
+int random_generator(int lowerNum, int upperNum) {
     random_device seed;
     mt19937 generate(seed());
-    uniform_int_distribution distr(1,100);
+    uniform_int_distribution distr(lowerNum, upperNum);
     return distr(generate);
 }
 
@@ -126,11 +126,28 @@ void write_highscore(int score, int chances) {
         writeFile.close();
 }
 
+int hint_system(int guessNum) {
+    int rangeNum = random_generator(1,15);
+    int sign = random_generator(0,1);
+    if (sign == 0) {sign = -1;}
+    int hintNum = (sign * rangeNum) + guessNum;
+    return hintNum;
+}
+
 void initiate(int chances, int guessNum) {
     int user_input;
     int counter = 0;
     auto firstPoint = chrono::high_resolution_clock::now();
+    vector<int> hintCounter = {5, 3, 2};
+    vector<int> chancesIndex = {10, 5, 3};
     while (counter < chances) {
+            for (int i = 0; i < chancesIndex.size(); i++) {
+                if (chancesIndex[i] == chances) {
+                    if (counter == hintCounter[i]) {
+                        cout << "Hint: The number is near " << hint_system(guessNum) << ".\n";
+                    }
+                }
+            }
         cout << "Enter your guess: ";
         cin >> user_input;
         if (cin.fail()) {

@@ -4,7 +4,7 @@
 
 using namespace std;
 int main() {
-    int guessNum = random_generator();
+    int guessNum = random_generator(1, 100);
     print_message();
     int chances;
     do {
@@ -17,7 +17,7 @@ int main() {
         cout << "Would you like to play another round? (y/n) ";
         cin >> c;
         if (c == 'y') {
-            guessNum = random_generator();
+            guessNum = random_generator(1, 100);
             initiate(chances,guessNum);
         }
         else if(c == 'n') {
