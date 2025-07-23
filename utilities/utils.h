@@ -3,7 +3,6 @@
 
 #include <vector>
 
-
 int random_generator(int lowerNum, int higherNum);      // Returns a randomly generated number between the numbers lowerNum and higherNum
 void print_message();                                   // Prints a message when you start the program
 int selection();                                        // Gives a selection of the difficulties, as well as the highscore
