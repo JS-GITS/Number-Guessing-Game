@@ -3,7 +3,7 @@
 
 Clone the repository and run the following command:
 ```bash
-https://github.com/JS-GITS/Number-Guessing-Game.git NGG
+git clone https://github.com/JS-GITS/Number-Guessing-Game.git NGG
 cd ./NGG
 make
 ```
