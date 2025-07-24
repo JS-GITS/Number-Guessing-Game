@@ -150,7 +150,6 @@ vector<int> check_highscore() {
  */
 void write_highscore(int score, int chances) {
         vector<int> highscore = check_highscore();
-        ofstream writeFile("./data/highscore.json");
         int pos;
         if (chances == 10) {
             pos = 0;
@@ -167,6 +166,7 @@ void write_highscore(int score, int chances) {
         if (score < highscore[pos] || highscore[pos] == 0) {
             highscore[pos] = score;
         }
+        ofstream writeFile("./data/highscore.json");
         writeFile << "{\n";
         writeFile << "  \"Easy\": " << highscore[0] << ",\n";
         writeFile << "  \"Medium\": " << highscore[1] << ",\n";
@@ -187,7 +187,7 @@ void write_highscore(int score, int chances) {
  * @return a number that is deviated from guessNum by 1 to 15
  */
 int hint_system(int guessNum) {
-    int rangeNum = random_generator(1,15);
+    int rangeNum = random_generator(1,5);
     int sign = random_generator(0,1);
     if (sign == 0) {sign = -1;}
     int hintNum = (sign * rangeNum) + guessNum;
@@ -252,5 +252,6 @@ void initiate(int chances, int guessNum) {
             cout << "Incorrect! The number is greater than " << user_input << ".\n\n";
         }
     }
-    cout << "You have unfortunately ran out of chances." << endl;
+    cout << "The correct number is: " << guessNum <<  endl;
+    cout << "You have unfortunately ran out of chances.\n" << endl;
 }
