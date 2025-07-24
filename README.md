@@ -1,6 +1,10 @@
 # Number-Guessing-Game
 ### Project idea from https://roadmap.sh/projects/number-guessing-game
-[![](./assets/preview.gif)](https://roadmap.sh/projects/number-guessing-game)
+<p align="center">
+  <a href="https://roadmap.sh/projects/number-guessing-game">
+    <img src="./assets/preview.gif" alt="Preview">
+  </a>
+</p>
 
 Clone the repository and run the following command:
 ```bash
