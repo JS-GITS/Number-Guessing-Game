@@ -1,0 +1,297 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+
+  # Specify a command to be executed
+  # like `/bin/bash -l`, `ls`, or any other commands
+  # the default is bash for Linux
+  # or powershell.exe for Windows
+  command: powershell.exe
+  
+  # Specify the current working directory path
+  # the default is the current working directory path
+  cwd: D:\Documents\GitHub\Number-Guessing-Game
+  
+  # Export additional ENV variables
+  env:
+    recording: true
+  
+  # Explicitly set the number of columns
+  # or use `auto` to take the current
+  # number of columns of your shell
+  cols: 202
+  
+  # Explicitly set the number of rows
+  # or use `auto` to take the current
+  # number of rows of your shell
+  rows: 12
+  
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: 0
+  
+  # Quality
+  # 1 - 100
+  quality: 100
+  
+  # Delay between frames in ms
+  # If the value is `auto` use the actual recording delays
+  frameDelay: auto
+  
+  # Maximum delay between frames in ms
+  # Ignored if the `frameDelay` isn't set to `auto`
+  # Set to `auto` to prevent limiting the max idle time
+  maxIdleTime: 2000
+  
+  # The surrounding frame box
+  # The `type` can be null, window, floating, or solid`
+  # To hide the title use the value null
+  # Don't forget to add a backgroundColor style with a null as type
+  frameBox:
+    type: floating
+    title: Terminalizer
+    style:
+      border: 0px black solid
+      # boxShadow: none
+      # margin: 0px
+  
+  # Add a watermark image to the rendered gif
+  # You need to specify an absolute path for
+  # the image on your machine or a URL, and you can also
+  # add your own CSS styles
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
+  
+  # Cursor style can be one of
+  # `block`, `underline`, or `bar`
+  cursorStyle: block
+  
+  # Font family
+  # You can use any font that is installed on your machine
+  # in CSS-like syntax
+  fontFamily: "Monaco, Lucida Console, Ubuntu Mono, Monospace"
+  
+  # The size of the font
+  fontSize: 12
+  
+  # The height of lines
+  lineHeight: 1
+  
+  # The spacing between letters
+  letterSpacing: 0
+  
+  # Theme
+  theme:
+    background: "transparent"
+    foreground: "#afafaf"
+    cursor: "#c7c7c7"
+    black: "#232628"
+    red: "#fc4384"
+    green: "#b3e33b"
+    yellow: "#ffa727"
+    blue: "#75dff2"
+    magenta: "#ae89fe"
+    cyan: "#708387"
+    white: "#d5d5d0"
+    brightBlack: "#626566"
+    brightRed: "#ff7fac"
+    brightGreen: "#c8ed71"
+    brightYellow: "#ebdf86"
+    brightBlue: "#75dff2"
+    brightMagenta: "#ae89fe"
+    brightCyan: "#b1c6ca"
+    brightWhite: "#f9f9f4"
+  
+# Records, feel free to edit them
+records:
+  - delay: 515
+    content: "\e[?9001h\e[?1004h"
+  - delay: 346
+    content: "\e[?25l\e[2J\e[m\e[HWindows PowerShell\r\nCopyright (C) Microsoft Corporation. All rights reserved.\e[4;1HInstall the latest PowerShell for new features and improvements! https://aka.ms/PSWindows\e]0;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\a\e[?25h"
+  - delay: 14
+    content: "\e[?25l\e[6;1H\e[?25h"
+  - delay: 259
+    content: 'PS D:\Documents\GitHub\Number-Guessing-Game> '
+  - delay: 473
+    content: "\e[?25l"
+  - delay: 16
+    content: "\e[93mm\e[?25h"
+  - delay: 74
+    content: "\e[m\e[?25l"
+  - delay: 17
+    content: "\e[93m\bma\e[?25h"
+  - delay: 98
+    content: "\e[m\e[?25l"
+  - delay: 10
+    content: "\e[93m\e[6;46Hmak\e[?25h"
+  - delay: 92
+    content: "\e[m\e[?25l"
+  - delay: 17
+    content: "\e[93m\e[6;46Hmake\e[?25h"
+  - delay: 162
+    content: "\e[m"
+  - delay: 9
+    content: "\r\n"
+  - delay: 178
+    content: "g++ src/main.cpp utilities/utils.cpp -o main\r\n"
+  - delay: 3780
+    content: 'PS D:\Documents\GitHub\Number-Guessing-Game> '
+  - delay: 372
+    content: "\e[?25l"
+  - delay: 18
+    content: "\e[91m\e[8;44H> \e[37m.\e[?25h"
+  - delay: 173
+    content: "\e[m\e[?25l"
+  - delay: 13
+    content: "\e[8;44H> \e[93m./\e[?25h"
+  - delay: 520
+    content: "\e[m\e[?25l"
+  - delay: 10
+    content: "\e[93m\e[8;46H./m\e[?25h"
+  - delay: 100
+    content: "\e[m\e[?25l"
+  - delay: 9
+    content: "\e[93m\e[8;46H./ma\e[?25h"
+  - delay: 77
+    content: "\e[m\e[?25l"
+  - delay: 18
+    content: "\e[93m\e[8;46H./mai\e[?25h"
+  - delay: 114
+    content: "\e[m\e[?25l"
+  - delay: 11
+    content: "\e[93m\e[8;46H./main\e[?25h"
+  - delay: 350
+    content: "\e[m"
+  - delay: 9
+    content: "\r\n"
+  - delay: 141
+    content: "Welcome to Number Guessing Game!\r\nI'm thinking of a number between 1 and 100.\r\nYou have a fixed number of chances to guess the correct number.\r\nPlease select the difficulty level:\r\n1. Easy (10 chances)\r\n2. Medium (5 chances)\r\n3. Hard (3 chances)\r\n4. Practice (Unlimited chances)\r\n5. Check your highscores\r\n"
+  - delay: 13
+    content: "\nEnter your choice:\e[1C"
+  - delay: 884
+    content: '1'
+  - delay: 120
+    content: "\r\n\nGreat! You have selected the Easy difficulty level.\r\nLet's start the game!\r\n"
+  - delay: 16
+    content: "\nEnter your guess:\e[1C"
+  - delay: 944
+    content: '5'
+  - delay: 100
+    content: '0'
+  - delay: 273
+    content: "\r\nIncorrect! The number is greater than 50.\r\n"
+  - delay: 10
+    content: "\nEnter your guess:\e[1C"
+  - delay: 1385
+    content: '7'
+  - delay: 136
+    content: '5'
+  - delay: 211
+    content: "\r\nIncorrect! The number is lesser than 75.\r\n"
+  - delay: 20
+    content: "\nEnter your guess:\e[1C"
+  - delay: 1535
+    content: '6'
+  - delay: 120
+    content: '5'
+  - delay: 544
+    content: "\r\nIncorrect! The number is lesser than 65.\r\n"
+  - delay: 23
+    content: "\nEnter your guess:\e[1C"
+  - delay: 1149
+    content: '6'
+  - delay: 80
+    content: '0'
+  - delay: 257
+    content: "\r\nIncorrect! The number is lesser than 60.\r\n"
+  - delay: 11
+    content: "\nEnter your guess:\e[1C"
+  - delay: 1480
+    content: '5'
+  - delay: 101
+    content: '5'
+  - delay: 321
+    content: "\r\nIncorrect! The number is lesser than 55.\r\n\nHint: The number is near 48.\r"
+  - delay: 13
+    content: "\nEnter your guess:\e[1C"
+  - delay: 4432
+    content: '5'
+  - delay: 165
+    content: '3'
+  - delay: 591
+    content: "\r\nIncorrect! The number is lesser than 53.\r\n"
+  - delay: 10
+    content: "\nEnter your guess:\e[1C"
+  - delay: 1152
+    content: '5'
+  - delay: 163
+    content: '1'
+  - delay: 256
+    content: "\r\n\nCongratulations! You guessed the correct number in 7 attempts.\r\nYou completed the game in 15 seconds and 501 milliseconds.\r\n\nExiting game...\r"
+  - delay: 11
+    content: "\nPS D:\\Documents\\GitHub\\Number-Guessing-Game>\e[1C"
+  - delay: 2980
+    content: "\e[?25l"
+  - delay: 21
+    content: "\e[91m\e[12;44H> \e[37m.\e[?25h"
+  - delay: 96
+    content: "\e[m\e[?25l"
+  - delay: 14
+    content: "\e[12;44H> \e[93m./\e[?25h"
+  - delay: 307
+    content: "\e[m\e[?25l"
+  - delay: 20
+    content: "\e[93m\e[12;46H./m\e[?25h"
+  - delay: 156
+    content: "\e[m\e[?25l"
+  - delay: 13
+    content: "\e[93m\e[12;46H./ma\e[?25h"
+  - delay: 62
+    content: "\e[m\e[?25l"
+  - delay: 16
+    content: "\e[93m\e[12;46H./mai\e[?25h"
+  - delay: 142
+    content: "\e[m\e[?25l"
+  - delay: 14
+    content: "\e[93m\e[12;46H./main\e[?25h"
+  - delay: 630
+    content: "\e[m"
+  - delay: 9
+    content: "\r\nWelcome to Number Guessing Game!\r\nI'm thinking of a number between 1 and 100.\r\nYou have a fixed number of chances to guess the correct number.\r\nPlease select the difficulty level:\r\n1. Easy (10 chances)\r\n2. Medium (5 chances)\r\n3. Hard (3 chances)\r\n4. Practice (Unlimited chances)\r\n5. Check your highscores\r\n\nEnter your choice:\e[1C"
+  - delay: 1049
+    content: '5'
+  - delay: 383
+    content: "\r\n\nEasy: 7 attempts\r\nMedium: No highscore yet\r\nHard: No highscore yet\r\n"
+  - delay: 17
+    content: "\nEnter your choice:\e[1C"
+  - delay: 3408
+    content: "\r"
+  - delay: 6
+    content: "\nPS D:\\Documents\\GitHub\\Number-Guessing-Game>\e[1C"
+  - delay: 238
+    content: "\e[?25l"
+  - delay: 11
+    content: "\e[93me\e[?25h"
+  - delay: 177
+    content: "\e[m\e[?25l"
+  - delay: 12
+    content: "\e[93m\bex\e[?25h"
+  - delay: 105
+    content: "\e[m\e[?25l"
+  - delay: 20
+    content: "\e[93m\e[12;46Hexi\e[?25h"
+  - delay: 101
+    content: "\e[m\e[?25l"
+  - delay: 23
+    content: "\e[92m\e[12;46Hexit\e[?25h"
+  - delay: 218
+    content: "\e[m"
+  - delay: 15
+    content: "\r\n"
